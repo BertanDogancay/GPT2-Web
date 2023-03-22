@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<body>
+  <nav class="w3-bar w3-black">
+    <a href="#home" class="w3-button w3-bar-item">Home</a>
+    <a href="https://github.com/BertanDogancay" class="w3-button w3-bar-item">Github</a>
+    <a href="http://bertan-dogancay.zenexserver.com" class="w3-button w3-bar-item">Projects</a>
+    <a href="#contact" class="w3-button w3-bar-item">Contact</a>
+ </nav>
+  <div>
+    <div id="chat-container">
+      <p class="bot-text"><span><img src="static/images/botimage.jpg" width="25px" height="25px" style="border-radius: 5px;">  Hi! Ask me something. </span></p>
+    </div>
+    <div id="userInput">
+      <input id="textInput" type="text" name="msg" placeholder="Type something...">
+      <input id="buttonInput" type="submit" value="Submit">
+    </div>
+    <script>
+      function scrollToBottom(element) {
+        element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
+      }
+      function getBotResponse() {
+        var rawText = $("#textInput").val();
+        var userHtml = '<p class="user-text"><span><img src="static/images/userimage.jpg" width="25px" height="25px" style="border-radius: 5px;">' + "  " + rawText + '</span></p>';
+        $("#textInput").val("");
+        $("#chat-container").append(userHtml);
+        document.getElementById('chat-container').scrollBy(0, document.getElementById('chat-container').scrollHeight);
+        $.get("/get", { msg: rawText }).done(function (data) {
+          var botHtml = '<p class="bot-text"><span><img src="static/images/botimage.jpg" width="25px" height="25px" style="border-radius: 5px;">' + "  " + data + '</span></p>';
+          $("#chat-container").append(botHtml);
+          document.getElementById('chat-container').scrollBy(0, document.getElementById('chat-container').scrollHeight)
+        });
+      }
+      $("#textInput").keypress(function (e) {
+        if ((e.which == 13) && document.getElementById("textInput").value != "") {
+          getBotResponse();
+        }
+      });
+      $("#buttonInput").click(function () {
+        if (document.getElementById("textInput").value != "") {
+          getBotResponse();
+        }
+      })
+    </script>
+  </div>
+</body>
+
+</html>
