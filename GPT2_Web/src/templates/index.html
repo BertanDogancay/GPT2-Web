@@ -22,10 +22,7 @@
       <input id="buttonInput" type="submit" value="Submit">
     </div>
     <script>
-      function scrollToBottom(element) {
-        element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
-      }
-      function getBotResponse() {
+      function getResponse() {
         var rawText = $("#textInput").val();
         var userHtml = '<p class="user-text"><span><img src="static/images/userimage.jpg" width="25px" height="25px" style="border-radius: 5px;">' + "  " + rawText + '</span></p>';
         $("#textInput").val("");
@@ -39,12 +36,12 @@
       }
       $("#textInput").keypress(function (e) {
         if ((e.which == 13) && document.getElementById("textInput").value != "") {
-          getBotResponse();
+          getResponse();
         }
       });
       $("#buttonInput").click(function () {
         if (document.getElementById("textInput").value != "") {
-          getBotResponse();
+          getResponse();
         }
       })
     </script>
