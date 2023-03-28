@@ -2,6 +2,8 @@
 A flask application that uses DialoGPT model.
 
 ## Try it!
+Note: The model takes about 1 min to load. It will be improved.
+
 https://flask-service-iolnexrvpa-ue.a.run.app
 
 ## Steps to Deploy:
