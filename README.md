@@ -24,6 +24,9 @@ https://flask-service-iolnexrvpa-ue.a.run.app
    gcloud builds submit --tag gcr.io/<project-name-ID>/<image>
    gcloud run deploy --image gcr.io/<project-name-ID>/<image> --cpu 2.0 --memory 8Gi
 ```
+## Example Output:
 
 https://user-images.githubusercontent.com/111835151/226846308-524a2592-78e8-480f-bde5-f66bfcb3f6e3.mp4
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/bertandogancay)
 
